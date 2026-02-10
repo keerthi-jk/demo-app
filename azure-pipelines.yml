@@ -1,5 +1,14 @@
-gf
+pr:
+  branches:
+    include:
+      - main
 
+pool:
+  vmImage: 'ubuntu-latest'
 
-
-jhefuihegh yhfghyi tiyg
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    jdkVersionOption: '11'
