@@ -3,8 +3,9 @@ pr:
     include:
       - main
 
-pool: #telling what operation system we will be using 
-  name: self-hosted-windows 
+pool:
+  name: Azure Pipelines
+  vmImage: ubuntu-latest
 
 steps:
 - task: Maven@3
