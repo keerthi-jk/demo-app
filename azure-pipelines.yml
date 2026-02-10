@@ -3,8 +3,8 @@ pr:
     include:
       - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: #telling what operation system we will be using 
+  name: self-hosted-windows 
 
 steps:
 - task: Maven@3
