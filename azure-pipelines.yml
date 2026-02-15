@@ -8,5 +8,5 @@ pool:
   name: 'self-hosted-windows'
 
 steps:
-  - script: echo "Hello from my self-hosted-agent"
-    displayName: 'check my agent'
+  - script: echo "this is my first time writing without seeing"
+    displayName: "Running on self hosted agent"
