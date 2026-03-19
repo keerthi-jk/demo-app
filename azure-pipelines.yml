@@ -17,6 +17,8 @@ stages:
         organization: 'Azure-Devops-learning1'
         scannerMode: 'Other'
         projectKey: 'demo-app'
+        extraProperties:
+          sonar.projectKey=demo-app
 
     - task: Maven@4
       inputs:
