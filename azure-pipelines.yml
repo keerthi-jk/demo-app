@@ -4,14 +4,27 @@ trigger:
 pool: 
   vmImage: 'ubuntu-latest'
 
-steps:
-  - task: Maven@4
-    inputs: 
-      mavenPomFile: 'pom.xml'
-      goals: 'clean install'
-      publishJUnitResults: true 
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-  - task: PublishBuildArtifacts@1
-    inputs: 
-      pathtoPublish: 'target'
-      artifactName : 'drop'
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'clean install'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+
+    - task: PublishBuildArtifacts@1
+      inputs: 
+       PathtoPublish: 'target'
+       ArtifactName: 'app'
+  
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps: 
+    - script: "echo deplpying the application"
+
