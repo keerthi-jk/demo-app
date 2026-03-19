@@ -10,12 +10,24 @@ stages:
   jobs:
   - job: BuildJob
     steps:
+  
+    - task: SonarCloudPrepare@4
+      inputs:
+        sonarCloud: 'sonarcloud-connection'
+        organization: 'Azure-Devops-learning1'
+        scannerMode: 'Other'
+        projectKey: 'demo-app'
+
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
-        goals: 'clean install'
+        goals: 'clean verify sonar:sonar'
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      
+    - task: SonarCloudPublish@4
+      inputs:
+        pollingTimeoutSec: '300'
 
     - task: PublishBuildArtifacts@1
       inputs: 
