@@ -14,11 +14,9 @@ stages:
     - task: SonarCloudPrepare@4
       inputs:
         sonarCloud: 'sonarcloud-connection'
-        organization: 'Azure-Devops-learning1'
+        organization: 'azure-devops-learning1'
         scannerMode: 'Other'
-        projectKey: 'demo-app'
-        extraProperties:
-          sonar.projectKey=demo-app
+        projectKey: 'keerthi-jk_demo-app'
 
     - task: Maven@4
       inputs:
